@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Irish Home Cookbook</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- FastSpring Store Builder Library (SBL)
+       - data-storefront: points to our test popup checkout
+       - data-after-markup-callback: called once SBL loads, we then add the product
+         to the session so price, image and name populate via data-fsc-* attributes -->
+  <script id="fsc-api" src="https://sbl.onfastspring.com/sbl/1.0.7/fastspring-builder.min.js" type="text/javascript"
+    data-storefront="testtariq.test.onfastspring.com/popup-testtariq" data-after-markup-callback="afterMarkup">
+    </script>
+  <script>
+    var productAdded = false;
+    function afterMarkup() {
+      if (!productAdded) {
+        fastspring.builder.add("irish-home-cookbook");
+        productAdded = true;
+      }
+    }
+  </script>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream: #faf6ef;
+      --dark: #1a1208;
+      --green: #2d5a27;
+      --green-light: #4a7c42;
+      --gold: #c8933a;
+      --text: #3a2e1e;
+      --muted: #7a6a55;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--text);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(45, 90, 39, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(200, 147, 58, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 10%;
+      bottom: 10%;
+      left: 50%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      opacity: 0.4;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px 80px 80px;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px;
+      animation: fadeUp 0.9s ease 0.2s both;
+    }
+
+    .eyebrow {
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--green);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+      margin-top: 4px;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text);
+      max-width: 440px;
+      margin-bottom: 48px;
+      opacity: 0.85;
+    }
+
+    .price-block {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .price-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* SBL writes the localised price into this element */
+    [data-fsc-item-price] {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .btn-buy {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--green);
+      color: #fff;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 18px 40px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .secure-note {
+      margin-top: 16px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Product image — SBL sets the src via data-fsc-item-image */
+    .product-image-wrap {
+      position: relative;
+      width: 300px;
+    }
+
+    .product-image-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+      box-shadow: 20px 30px 60px rgba(26, 18, 8, 0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .product-image-wrap img:hover {
+      transform: translateY(-6px) rotate(-1deg);
+      box-shadow: 28px 40px 70px rgba(26, 18, 8, 0.35);
+    }
+
+    .img-placeholder {
+      width: 300px;
+      height: 380px;
+      background: linear-gradient(135deg, #2d5a27, #1a3a15);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      box-shadow: 20px 30px 60px rgba(26, 18, 8, 0.3);
+    }
+
+    .img-placeholder p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .product-strip {
+      background: var(--gold);
+      padding: 20px 80px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .strip-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dark);
+      opacity: 0.6;
+    }
+
+    .strip-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+
+    .strip-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(26, 18, 8, 0.2);
+    }
+
+    .features {
+      background: var(--dark);
+      padding: 80px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .feature {
+      padding: 48px 40px;
+      border-right: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .feature:last-child {
+      border-right: none;
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .feature h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .feature p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero::after {
+        display: none;
+      }
+
+      .hero-left {
+        padding: 60px 32px 40px;
+      }
+
+      .hero-right {
+        padding: 0 32px 60px;
+        justify-content: flex-start;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+        padding: 40px 32px;
+      }
+
+      .feature {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 32px 0;
+      }
+
+      .product-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 32px;
+        gap: 16px;
+      }
+
+      .strip-divider {
+        display: none;
+      }
+
+      .product-image-wrap,
+      .img-placeholder {
+        width: 240px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-left">
+      <p class="eyebrow">New Release · 2026</p>
+
+      <h1>Irish <em>Home</em><br>Cookbook</h1>
+      <p class="subtitle">Traditional recipes for the modern kitchen</p>
+
+      <p class="description">
+        A heartfelt collection of over 80 classic Irish recipes — from slow-braised lamb stew
+        and soda bread fresh from the oven, to hearty colcannon and warm apple tart.
+        Written for home cooks who believe that the best food tells a story.
+      </p>
+
+      <!-- Price: SBL auto-localises to visitor's currency (EUR for Ireland/Europe, USD for US, GBP for UK etc.) -->
+      <div class="price-block">
+        <span class="price-label">Price</span>
+        <span data-fsc-item-path="irish-home-cookbook" data-fsc-item-price>—</span>
+      </div>
+
+      <!-- Add product to session + open popup checkout -->
+      <button class="btn-buy" onclick="fastspring.builder.add('irish-home-cookbook'); fastspring.builder.checkout();">
+        Buy Now
+      </button>
+
+      <p class="secure-note">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </svg>
+        Secure checkout powered by FastSpring
+      </p>
+    </div>
+
+    <div class="hero-right">
+      <div class="product-image-wrap">
+        <!-- SBL populates src from the product image uploaded in FastSpring dashboard -->
+        <img id="product-img" data-fsc-item-path="irish-home-cookbook" data-fsc-item-image alt="Irish Home Cookbook"
+          style="display:none;" />
+        <!-- Fallback until image loads -->
+        <div class="img-placeholder" id="img-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="20" r="8" fill="rgba(200,147,58,0.35)" stroke="rgba(200,147,58,0.7)" stroke-width="1" />
+            <circle cx="16" cy="28" r="8" fill="rgba(200,147,58,0.35)" stroke="rgba(200,147,58,0.7)" stroke-width="1" />
+            <circle cx="32" cy="28" r="8" fill="rgba(200,147,58,0.35)" stroke="rgba(200,147,58,0.7)" stroke-width="1" />
+            <line x1="24" y1="30" x2="24" y2="44" stroke="rgba(200,147,58,0.7)" stroke-width="1.5"
+              stroke-linecap="round" />
+          </svg>
+          <p>Irish Home Cookbook</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product strip — name and price from SBL -->
+  <div class="product-strip">
+    <div>
+      <p class="strip-label">Product</p>
+      <p class="strip-value" data-fsc-item-path="irish-home-cookbook" data-fsc-item-display>Irish Home Cookbook</p>
+    </div>
+    <div class="strip-divider"></div>
+    <div>
+      <p class="strip-label">Format</p>
+      <p class="strip-value">Digital Download</p>
+    </div>
+    <div class="strip-divider"></div>
+    <div>
+      <p class="strip-label">Price</p>
+      <p class="strip-value" data-fsc-item-path="irish-home-cookbook" data-fsc-item-price>—</p>
+    </div>
+    <div class="strip-divider"></div>
+    <div>
+      <p class="strip-label">Availability</p>
+      <p class="strip-value">Instant Access</p>
+    </div>
+  </div>
+
+  <section class="features">
+    <div class="feature">
+      <h3>80+ Authentic Recipes</h3>
+      <p>From Dublin coddle to Kerry lamb pie — every recipe tested in a real home kitchen with love and a good deal of
+        butter.</p>
+    </div>
+    <div class="feature">
+      <h3>Seasonal & Traditional</h3>
+      <p>Organised by season, celebrating the simple Irish ingredients that have fed families for generations.</p>
+    </div>
+    <div class="feature">
+      <h3>Instant Digital Access</h3>
+      <p>Download immediately after purchase. Works on all devices — read in the kitchen, tablet propped on the counter.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    // Show real product image once SBL sets the src, hide placeholder
+    var imgEl = document.getElementById('product-img');
+    var placeholder = document.getElementById('img-placeholder');
+    if (imgEl && placeholder) {
+      new MutationObserver(function () {
+        if (imgEl.getAttribute('src')) {
+          imgEl.style.display = 'block';
+          placeholder.style.display = 'none';
+        }
+      }).observe(imgEl, { attributes: true, attributeFilter: ['src'] });
+    }
+  </script>
+
+</body>
+
+</html>

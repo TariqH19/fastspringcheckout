@@ -22,7 +22,11 @@ The page displays product details (name, price, image) pulled dynamically from F
 
 ### Option A — GitHub Pages (no setup required)
 
+Popup
 https://tariqh19.github.io/fastspringcheckout/
+
+Web Checkout
+https://testtariq.test.onfastspring.com/irish-home-cookbook
 
 ### Option B — Run Locally
 

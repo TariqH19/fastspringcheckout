@@ -22,7 +22,7 @@ The page displays product details (name, price, image) pulled dynamically from F
 
 ### Option A — GitHub Pages (no setup required)
 
-Open the deployed URL directly in a browser. FastSpring SBL loads from the CDN and the checkout works immediately.
+https://tariqh19.github.io/fastspringcheckout/
 
 ### Option B — Run Locally
 
